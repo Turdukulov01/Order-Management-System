@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать заказ</title>
+</head>
+<body>
+    <h1>Редактировать заказ #{{ order.id }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="table_number">Номер стола:</label>
+        <input type="text" name="table_number" id="table_number" value="{{ order.table_number }}" required>
+
+        <label for="items">Список блюд (JSON):</label>
+        <textarea name="items" id="items" required>{{ order.items|safe }}</textarea>
+
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'list_orders' %}">Назад к списку</a>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<h1>Изменить статус заказа</h1>
+<form method="post">
+    {% csrf_token %}
+    <select name="status">
+        <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>В ожидании</option>
+        <option value="ready" {% if order.status == 'ready' %}selected{% endif %}>Готово</option>
+        <option value="paid" {% if order.status == 'paid' %}selected{% endif %}>Оплачено</option>
+    </select>
+    <button type="submit">Сохранить</button>
+</form>
+<a href="{% url 'orders_list' %}">Назад</a>

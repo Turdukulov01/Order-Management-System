@@ -1,0 +1,12 @@
+<h1>Добавить заказ</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="table_number">Номер стола:</label>
+    <input type="text" name="table_number" id="table_number" required>
+
+    <label for="items">Список блюд (JSON):</label>
+    <textarea name="items" id="items" required>{}</textarea>
+
+    <button type="submit">Добавить</button>
+</form>
+<a href="{% url 'list_orders' %}">Назад к списку</a>
